@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> HOME </title>
+<link rel="stylesheet" href="resource/css/style.css">
+</head>
+<style>
+table1, th, td {
+  border:1px solid pink;
+}
+</style>
+
+<body>
+
+
+<img src="resource/image/wafalogo2.jpg" style="width:20%" border="2" >
+  
+<br>
+
+<p>
+<header>
+</header>
+<hr>
+<nav>
+<table cellspacing="10" cellpading="10">
+<tr>
+<td><a href="index.html"> HOME</a> </td>
+<td><a href="aboutme.html">ME </a> </td>
+<td><a href="myfamily.html"> FAMILY  </a> </td>
+<td><a href="myfriends.html"> FRIENDS </a> </td>
+<td><a href="myinterest.html"> PERSONAL INTEREST </a> </td>
+<td><a href="myeducation.html"> EDUCATION </a> </td>
+<td><a href="memorablemoment.html"> MEMORABLE MOMENT </a> </td>
+
+</tr>
+</table>
+</nav>
+<hr>
+</p>
+
+
+<marquee loop bgcolor="white" scrollamount="5">
+<p class="title">
+&#x1F497 WELCOME TO MY LITTLE DIARY !&#128151
+</p>
+</marquee>
+
+
+<br><br><br>
+
+<center>
+<p style="background-image: url('resource/image/indexme.jpg');">
+
+<canvas id="canvas" width="200" height="200" style="background-color:#333" >
+</canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+let radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  const grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(let num = 1; num < 13; num++){
+    let ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    const now = new Date();
+    let hour = now.getHours();
+    let minute = now.getMinutes();
+    let second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+
+<br><br>
+<img src="resource/image/indexbeach.jpg" border="4" width="30%" vspace="10" hspace="10" align="center" >
+<h1>HOPE YOU ENJOY MY LITTLE DIARY! </h1>
+
+</p>
+
+
+<br><br><br><br>
+
+YOU CAN CONTACT ME ON: PHONE(0196711838)
+<br><br>
+SOCIAL MEDIA:
+<p><a href="https://www.instagram.com/farisyaazan_" target="blank_"> My Instagram! </a>
+<img src="resource/image/instagram.png" width="2%" align="center" ></p>
+<br><br><br>
+<footer>
+Copyright &copy; Wafa's Diary 2024-2025
+</footer>
+</body>
+</html> 

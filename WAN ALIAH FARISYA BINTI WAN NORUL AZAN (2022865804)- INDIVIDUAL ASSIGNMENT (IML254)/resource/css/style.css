@@ -1,0 +1,31 @@
+body{
+  background-color: lightpink;
+  border-color: black;
+  
+}
+
+p.title {
+  font-family: Peanut Butter;
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
+
+p.subtitle {
+  font-family: Arial;
+  font-weight: bold;
+  text-align: left;
+  font-size: 30px;
+}
+
+
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+
+
+
